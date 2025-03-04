@@ -1,0 +1,4 @@
+crie o arquivo .env com suas credenciais da binance
+
+API_KEY=SEU_API_KEY
+API_SECRET=SEU_API_SECRET
