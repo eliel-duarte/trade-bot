@@ -51,6 +51,8 @@ class TradeBot:
             print(f"💰 COMPRADO! {quantidade_fechamento} BTC a {self.preco_compra} BRL")
             self.registrar_log("COMPRA", self.preco_compra, quantidade_fechamento)
             self.comprado = True
+            print("⏳ Aguardando 3 minutos antes da próxima operação...")
+            time.sleep(180)  # Aguarda 3 minutos
         except Exception as e:
             print(f"❌ Erro ao comprar: {e}")
     
@@ -63,6 +65,9 @@ class TradeBot:
             print(f"📉 VENDIDO! {quantidade_fechamento} BTC a {preco_venda} BRL")
             self.registrar_log("VENDA", self.preco_compra, self.quantidade_btc, preco_venda, quantidade_fechamento, taxa_venda)
             self.comprado = False
+            print("⏳ Aguardando 3 minutos antes da próxima operação...")
+            time.sleep(180)  # Aguarda 3 minutos
+            self.aguardando_primeira_entrada = True # depois da venda, esperar sinal novamente
         except Exception as e:
             print(f"❌ Erro ao vender: {e}")
     
@@ -87,7 +92,7 @@ class TradeBot:
                     variacao = (self.preco_atual - self.preco_compra) / self.preco_compra
                     print(f"🔍 Variação calculada: {variacao * 100:.4f}%")
                     print(f"🔍 Preço de compra: {self.preco_compra} | Preço atual: {self.preco_atual}")
-                    if variacao > 0.001:  # Apenas vende se a variação positiva for superior a 0,10%
+                    if abs(variacao) > 0.001:  # Agora vende tanto se a variação for positiva quanto negativa
                         self.vender()
             
             print(f"💰 Preço Atual: {self.preco_atual} BRL | SMA7: {self.sma7}, SMA28: {self.sma28}")
