@@ -1,0 +1,17 @@
+colocar log um uma planilha excel
+
+criar planilha log se nao exitir com os cabeçalhos 
+Compra Quantidade ValorEntrada Venda Quantidade ValorVenda TaxaTotal LucroBruto LucroLiquido
+
+na compra
+coluna 1 preço da compra
+coluna 2 quantidade da compra
+coluna 3 Valor da operação em BRL
+
+na venda - continuando na mesa linha da compra
+Coluna 4 preço da venda
+Coluna 5 Quantidade da venda
+Coluna 6 valor da venda
+coluna 7 calcular a taxa que é igual (preço da compra + preço da venda) * 0,001
+Coluna 8 calcular lucro bruto que é o valor de venda menos o valor de compra
+Coluna 9 calcula lucro liquido que é o valor lucro bruto menos a taxa
